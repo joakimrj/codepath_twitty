@@ -63,18 +63,18 @@ class Tweet {
         createdAtString = formatter.string(from: date)*/
         createdAtString = dictionary["created_at"] as! String
     }
-    static func tweets(with array: [[String: Any]]) -> [Tweet] {
+   /* static func tweets(with array: [[String: Any]]) -> [Tweet] {
         var tweets: [Tweet] = []
         for tweetDictionary in array {
             let tweet = Tweet(dictionary: tweetDictionary)
             tweets.append(tweet)
         }
         return tweets
-    }
-    /* //FLATMAP
+    }*/
+    //FLATMAP
     static func tweets(with array: [[String: Any]]) -> [Tweet] {
         return array.flatMap({ (dictionary) -> Tweet in
             Tweet(dictionary: dictionary)
         })
-    } */
+    }
 }

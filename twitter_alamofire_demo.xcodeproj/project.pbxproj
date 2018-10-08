@@ -109,6 +109,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		06B3A4C7216AC50600F7DB44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06B3A4C521696E1000F7DB44 /* TweetCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A7EAFA57FA35C74D37A8766E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,13 +165,13 @@
 		ED1AFD2F1E942B2500FD4B90 /* twitter_alamofire_demo */ = {
 			isa = PBXGroup;
 			children = (
+				06B3A4C7216AC50600F7DB44 /* Views */,
 				06B3A4B62166B7CE00F7DB44 /* Models */,
 				ED1D23501EF7650B00C51ACC /* API */,
 				ED1D234A1EF6E3B800C51ACC /* View Controllers */,
 				EDC4B7361E98627100D836AC /* twitter_alamofire_demo.entitlements */,
 				06B3A4BB2169435F00F7DB44 /* Assets.xcassets */,
 				ED1AFD341E942B2500FD4B90 /* Main.storyboard */,
-				06B3A4C521696E1000F7DB44 /* TweetCell.swift */,
 				ED1AFD301E942B2500FD4B90 /* AppDelegate.swift */,
 				ED1AFD391E942B2500FD4B90 /* LaunchScreen.storyboard */,
 				ED1AFD3C1E942B2500FD4B90 /* Info.plist */,

@@ -146,7 +146,9 @@
                                             <outlet property="profilePictureImage" destination="8F7-Mk-QiJ" id="z7b-KK-bS6"/>
                                             <outlet property="profileUsernameLabel" destination="ITv-f3-9QK" id="gZ5-eM-bNZ"/>
                                             <outlet property="tweetDateLabel" destination="0Q0-00-690" id="ywK-7N-NUI"/>
+                                            <outlet property="tweetFavorButton" destination="G8l-SK-Esx" id="TH0-QU-CKZ"/>
                                             <outlet property="tweetFavorLabel" destination="TnC-uo-S9Q" id="qQA-28-gXd"/>
+                                            <outlet property="tweetRetweetButton" destination="zZX-eF-NPU" id="xge-qx-ntP"/>
                                             <outlet property="tweetRetweetLabel" destination="YmY-HR-uuJ" id="elt-w7-2On"/>
                                             <outlet property="tweetTextLabel" destination="UJg-a1-2Ia" id="btX-Rz-oHC"/>
                                         </connections>
