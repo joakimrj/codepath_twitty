@@ -18,10 +18,12 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
-         tableView.insertSubview(refreshControl, at: 0)
+        tableView.insertSubview(refreshControl, at: 0)
 
         fetchData()
         

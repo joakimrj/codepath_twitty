@@ -83,6 +83,7 @@ class TweetCell: UITableViewCell {
     }
     
     func refreshData(){
+        
         tweetTextLabel.text = tweet.text
         profileNameLabel.text = tweet.user?.name
         let user = tweet.user?.screenName!
