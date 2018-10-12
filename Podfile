@@ -8,12 +8,9 @@ target 'twitter_alamofire_demo' do
   # Pods for twitter_alamofire_demo
   pod 'Alamofire'
   pod 'AlamofireImage'
-  pod 'ActiveLabel'
   pod 'OAuthSwift'
   pod 'OAuthSwiftAlamofire'
   pod 'KeychainAccess'
-  pod 'DateToolsSwift'
-  
 
   target 'twitter_alamofire_demoTests' do
     inherit! :search_paths

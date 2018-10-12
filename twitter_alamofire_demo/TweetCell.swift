@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ActiveLabel
 import AlamofireImage
 
 class TweetCell: UITableViewCell {
@@ -84,12 +83,7 @@ class TweetCell: UITableViewCell {
     }
     
     func refreshData(){
-        
         tweetTextLabel.text = tweet.text
-        tweetTextLabel.enabledTypes = [.mention, .hashtag, .url]
-        tweetTextLabel.handleURLTap{ (url) in
-            print("Success. You just tapped the \(url) url.")
-            }
         profileNameLabel.text = tweet.user?.name
         let user = tweet.user?.screenName!
         profileUsernameLabel.text = "@\(user ?? "Anon")"
