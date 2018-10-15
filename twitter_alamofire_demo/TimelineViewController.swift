@@ -12,6 +12,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         fetchData()
         
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
     }
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         fetchData()
@@ -57,6 +61,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,17 +73,29 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func onLogout(_ sender: Any) {
            APIManager.logout()
-        
     }
+
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let detailViewController = segue.destination as? DetailViewController {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let tweet = tweets[indexPath.row]
+                detailViewController.tweet = tweet
+            }
+        }
+        if let profileViewController = segue.destination as? ProfileViewController {
+            let button = sender as! UIButton
+            let cell = button.superview?.superview as! UITableViewCell
+            
+            if let indexPath = tableView.indexPath(for: cell){
+                let tweet = tweets[indexPath.row]
+                profileViewController.user = tweet.user
+            }
+        }
     }
-    */
-
 }

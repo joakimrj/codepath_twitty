@@ -39,11 +39,20 @@ class User {
     var name: String?
     var screenName: String?
     var profileImage: URL?
+    var profileBanner: URL?
+    var followersCount: String?
+     var followingCount: String?
+     var tweetsCount: String?
     
     init(dictionary: [String: Any]) {
         name = dictionary["name"] as? String
         screenName = dictionary["screen_name"] as? String
         profileImage = URL(string: dictionary["profile_image_url_https"] as! String)
+        // profileBanner = URL(string: dictionary["profile_banner_url"] as! String)
+        
+        followersCount = String(dictionary["followers_count"] as! Int)
+        followingCount = String(dictionary["friends_count"] as! Int)
+        tweetsCount = String(dictionary["statuses_count"] as! Int)
         
         self.dictionary = dictionary
     }

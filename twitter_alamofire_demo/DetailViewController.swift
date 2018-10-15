@@ -1,35 +1,37 @@
 //
-//  TweetCell.swift
-//  
+//  DetailViewController.swift
+//  twitter_alamofire_demo
 //
-//  Created by Joakim Jorde on 10/6/18.
+//  Created by Joakim Jorde on 10/13/18.
+//  Copyright © 2018 Charles Hieger. All rights reserved.
 //
 
 import UIKit
 import AlamofireImage
 
-class TweetCell: UITableViewCell {
+class DetailViewController: UIViewController {
 
-  
+    @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var detailName: UILabel!
+    @IBOutlet weak var detailUsername: UILabel!
+    @IBOutlet weak var detailDate: UILabel!
+    @IBOutlet weak var detailTweetText: UILabel!
+    
+    @IBOutlet weak var detailFavoriteButton: UIButton!
+    @IBOutlet weak var detailFavoriteCount: UILabel!
+    @IBOutlet weak var detailRetweetButton: UIButton!
+    @IBOutlet weak var detailRetweetCount: UILabel!
+    
+    var tweet: Tweet!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refreshData()
 
-    @IBOutlet weak var profilePictureImage: UIImageView!
-    @IBOutlet weak var profileNameLabel: UILabel!
-    @IBOutlet weak var profileUsernameLabel: UILabel!
-    @IBOutlet weak var tweetDateLabel: UILabel!
-    @IBOutlet weak var tweetTextLabel: UILabel!
-    
-    @IBOutlet weak var tweetRetweetLabel: UILabel!
-    @IBOutlet weak var tweetFavorLabel: UILabel!
-    @IBOutlet weak var tweetFavorButton: UIButton!
-    @IBOutlet weak var tweetRetweetButton: UIButton!
-    
-    var tweet: Tweet!{
-        didSet{
-            refreshData()
-        }
+        // Do any additional setup after loading the view.
     }
-
-    @IBAction func onFavorite(_ sender: Any) {
+    
+    @IBAction func detailOnFavorite(_ sender: Any) {
         if(tweet.favorited == false){
             tweet.favorited = true
             tweet.favoriteCount! += 1
@@ -57,7 +59,7 @@ class TweetCell: UITableViewCell {
         
     }
     
-    @IBAction func onRetweet(_ sender: Any) {
+    @IBAction func detailOnRetweet(_ sender: Any) {
         if(tweet.retweeted == false){
             tweet.retweeted = true
             tweet.retweetCount! += 1
@@ -84,47 +86,48 @@ class TweetCell: UITableViewCell {
         }
     }
     
-    func refreshData(){
-        tweetTextLabel.text = tweet.text
-        profileNameLabel.text = tweet.user?.name
+   func refreshData(){
+        detailTweetText.text = tweet.text
+        detailName.text = tweet.user?.name
         let user = tweet.user?.screenName!
-        profileUsernameLabel.text = "@\(user ?? "Anon")"
-        tweetDateLabel.text = tweet.createdAtString
-        tweetRetweetLabel.text = String(tweet.retweetCount!)
-        tweetFavorLabel.text = String(tweet.favoriteCount!)
+        detailUsername.text = "@\(user ?? "Anon")"
+        detailDate.text = tweet.createdAtString
+        detailRetweetCount.text = String(tweet.retweetCount!)
+        detailFavoriteCount.text = String(tweet.favoriteCount!)
         if(tweet.favorited)!
         {
-            tweetFavorButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+            detailFavoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
         }
         else
         {
-            tweetFavorButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+            detailFavoriteButton.setImage(UIImage(named: "favor-icon"), for: .normal)
         }
         
         if(tweet.retweeted)!
         {
-            tweetRetweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            detailRetweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
         }
         else
         {
-            tweetRetweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+            detailRetweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
         }
-
-        profilePictureImage.af_setImage(withURL: (tweet.user!.profileImage!))
         
+        
+        
+        detailImageView.af_setImage(withURL: tweet.user!.profileImage!)
     }
     
 
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    /*
+    // MARK: - Navigation
 
-        // Configure the view for the selected state
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }
