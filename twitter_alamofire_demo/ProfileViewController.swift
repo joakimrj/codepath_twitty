@@ -46,10 +46,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         profileName.text = self.user.name!
         let user = self.user.screenName!
         profileUsername.text = "@\(user)"
-        
+
+
         profileImage.af_setImage(withURL: (self.user.profileImage!))
-        
-        // profileBanner.af_setImage(withURL: (User.current?.profileBanner!)!)
+
+      //  profileBanner.af_setImage(withURL: (self.user.profileBanner!))
         profileTweetCount.text = self.user.tweetsCount!
         profileFollowingCount.text = self.user.followingCount!
         profileFollowersCount.text = self.user.followersCount!
@@ -92,14 +93,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let detailViewController = segue.destination as? DetailViewController {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let tweet = tweets[indexPath.row]
+                detailViewController.tweet = tweet
+            }
+        }
     }
-    */
-
 }
