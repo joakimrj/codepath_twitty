@@ -20,6 +20,7 @@ class Tweet {
     var retweeted: Bool? // Configure retweet button
     var user: User? // Author of the Tweet
     var createdAtString: String? // String representation of date posted
+    var createdAtStringLong: String? // String representation of date posted
     
 //    var replyCount: Int? // Update favorite count label
     
@@ -57,13 +58,13 @@ class Tweet {
         formatter.dateFormat = "E MMM d HH:mm:ss Z y"
         // Convert String to Date
         let date = formatter.date(from: createdAtOriginalString)
-        // Configure output format
-        //formatter.dateStyle = .short
-        // formatter.timeStyle = .none
-        // Convert Date to String and set the createdAtString property
-        // createdAtString = formatter.string(from: date)
-        
         createdAtString = date?.shortTimeAgoSinceNow
+        // Configure output format
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        // Convert Date to String and set the createdAtString property
+        createdAtStringLong = formatter.string(from: date!)
+      
     }
    /* static func tweets(with array: [[String: Any]]) -> [Tweet] {
         var tweets: [Tweet] = []

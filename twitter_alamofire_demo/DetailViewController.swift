@@ -91,7 +91,7 @@ class DetailViewController: UIViewController {
         detailName.text = tweet.user?.name
         let user = tweet.user?.screenName!
         detailUsername.text = "@\(user ?? "Anon")"
-        detailDate.text = tweet.createdAtString
+        detailDate.text = tweet.createdAtStringLong
         detailRetweetCount.text = String(tweet.retweetCount!)
         detailFavoriteCount.text = String(tweet.favoriteCount!)
         if(tweet.favorited)!
